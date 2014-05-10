@@ -8,10 +8,11 @@
   },
   "devDependencies": {
     "browserify": "^3.38.1",
-    "uglify-js": "^2.4.13"
+    "uglify-js": "^2.4.13",
+    "mocha": "^1.18.2"
   },
   "scripts": {
-    "test": "node test/test.js",
+    "test": "mocha",
     "build": "browserify lib/scrambo.js --standalone Scrambo | uglifyjs > scrambo.js"
   },
   "repository": {
