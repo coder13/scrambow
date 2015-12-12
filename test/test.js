@@ -38,32 +38,32 @@ describe('Scrambo', function(){
   describe('same scrambles', function(){
     it('should match 2x2', function(){
       var scrambles = [
-        "R' U' R2 F U2 F' U' F' U F R U R' F2 R' U R' U F R",
-        "F2 U R2 F' R' U2 F U R2 F2 R F U' F2 R2 U' F' R' F2 U",
-        "F2 R' U' F2 U2 R U2 F' U' F2 U' R2 U' F' U F2 R F U R2",
-        "R' U2 R' F' U' R2 F' U F2 U2 R2 F' U' F2 U R F2 R2 U2 F'",
-        "F' R F2 R' U' R2 U F' R2 U2 R U F' U' F2 R F R2 U R'",
-        "U' F U F R' U2 R2 F' R U' F2 R2 U F' U2 F' R U' R' U2",
-        "F2 U2 R2 F2 R2 F' R U F2 R' U' R U' R2 U2 R U' R2 F2 U'",
-        "R' F U2 R F' R' F R U F R' F R2 F2 R' U' F2 R' F2 U'",
-        "F' R' U R2 U2 F' U F R2 F2 R U' F2 U2 F' U2 F U R' F'",
-        "F' U2 R' U2 F U F' U' R F' R' F2 U' R F R2 U' R' F U2"
+        "F  R  F  R  U2 F' U  F2 R2",
+        "F2 R' U' F  R2 U2 F  U  F2",
+        "F' R' U  F  U  R' U'",
+        "R2 F  U2 F  R2 F2 U2 F' R'",
+        "U  R2 U' F  U' F  U2 R2",
+        "U' F  U2 R2 F' U' F  R",
+        "F  R' U' F  U' R  F  R2",
+        "F' U2 R  U' R2 F' R  F  U2",
+        "F2 U' F  U2 R' U' F' R'",
+        "R' U2 R2 U' R2 F  R  U'"
       ];
       var generated = test.seed(1).type('222').get(10);
       assert(arrays_equal(scrambles, generated));
     });
     it('should match 3x3', function(){
       var scrambles = [
-        "L D L2 B' D2 F' U' B U F R D' L F2 R' D' R' D' F L'",
-        "F2 U R2 F' L U2 B' D' R2 B2 L' B' U' B2 L2 D F' R' B2 U",
-        "B2 R' D F2 U2 R U2 B U' B2 U' R2 U' B D' B2 R F U L2",
-        "R' U2 L F' D R2 B U B2 D2 R2 B D F2 D' L' F2 R2 D2 B",
-        "B R B2 R' U' L2 U B R2 U2 R D' B D B2 L' F R2 U R'",
-        "U' F D' B' R' U2 L2 B L' U' B2 R2 D' F' U2 B R U' R' D2",
-        "B2 U2 R2 F2 R2 B R D' B2 R' D L' D R2 U2 R D L2 F2 U'",
-        "R' B' U2 L' F' R' B' L' D' B' R' B' R2 F2 R' U' F2 L F2 U'",
-        "B L D' L2 D2 F' D' B' L2 F2 R D B2 D2 B U2 F U L B",
-        "B U2 R' D2 F D' B D L' F' R' F2 D L' B' L2 U' L F U2"
+        "D' B  R  D' F  U2 L' B' L' B2 R' D2 F2 R  D2 L' B2 D2 F2",
+        "D' F2 L  D  L2 F' D' R2 B' D2 R' B2 D2 L2 B2 R  U2 R2 U2",
+        "B  L' U  R2 F  D  F  R  F2 D' F  U2 F2 U2 F  D2 B' L2 D2 F  L2",
+        "B2 D' U  B2 F2 D  B2 D  B2 L2 B2 L  B  L2 U' F' D  L  R2 U' B",
+        "F2 D2 F  U' L' F' B' L' B' D2 L2 B2 U2 D2 L' B2 L' F2 D2 B2",
+        "D2 L2 B' F  L2 D2 U2 B' F2 D2 U' B2 L2 B2 F  R  D' R2 B",
+        "B  D2 R  U' D' F' B2 U' F' U2 R2 U2 R  F2 B2 R  U2 B2 U2 L2",
+        "D' R  U2 L  F' U  B  R2 L' B' R2 D2 R2 F  R2 B  U2 L2 F2 R2",
+        "L2 U' F2 L2 U' L2 R2 D2 L2 D' R  D2 F  L  B' U  F' U2 B' D2 L'",
+        "D2 B2 L' U2 R2 D2 B2 U2 R  B2 R  B' F' D' B' L  F' R2 F' U"
       ];
       var generated = test.seed(1).type('333').get(10);
       assert(arrays_equal(scrambles, generated));
@@ -261,40 +261,21 @@ describe('Scrambo', function(){
     });
   });
 
-  describe('scramble length', function(){
-    it('should equal 20', function(){
-      test = test.get();
-      assert.equal(test.join().split(' ').length, 20);
-    });
-    it('should equal 5', function(){
-      test = test.length(5).get();
-      assert.equal(test.join().split(' ').length, 5);
-    });
-    it('should equal 1', function(){
-      test = test.length(1).get();
-      assert.equal(test.join().split(' ').length, 1);
-    });
-    it('should equal 10', function(){
-      test = test.length(10).get();
-      assert.equal(test.join().split(' ').length, 10);
-    });
-  });
-
   describe('555', function(){
     it('scramble should equal 20', function(){
       test = test.type('555').get();
       assert.equal(test.join().split(' ').length, 20);
     });
     it('scramble should equal 5', function(){
-      test = test.length(5).type('555').get();
+      test = test.type('555').length(5).get();
       assert.equal(test.join().split(' ').length, 5);
     });
     it('scramble should equal 1', function(){
-      test = test.length(1).type('555').get();
+      test = test.type('555').length(1).get();
       assert.equal(test.join().split(' ').length, 1);
     });
     it('scramble should equal 10', function(){
-      test = test.length(10).type('555').get();
+      test = test.type('555').length(10).get();
       assert.equal(test.join().split(' ').length, 10);
     });
   });
