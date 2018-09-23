@@ -1,8 +1,8 @@
 {
-  "name": "scrambo",
-  "version": "0.3.0",
+  "name": "scrambow",
+  "version": "0.1.0",
   "description": "Javascript Rubik's Cube Scramble Generator ",
-  "main": "./lib/scrambo.js",
+  "main": "./lib/scrambow.js",
   "dependencies": {
     "commander": "^2.3.0"
   },
@@ -16,11 +16,12 @@
     "test": "mocha -s 10",
     "test:watch": "mocha -R min -w",
     "cover": "istanbul cover _mocha",
-    "build": "browserify lib/scrambo.js --standalone Scrambo | uglifyjs > scrambo.js"
+    "build": "browserify lib/scrambow.js --standalone Scrambow | uglifyjs > scrambow.js",
+    "prepublish": "npm build"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/nickcolley/scrambo.git"
+    "url": "git://github.com/Owstin/scrambo.git"
   },
   "keywords": [
     "scramble",
@@ -29,10 +30,10 @@
     "rubik",
     "jsss"
   ],
-  "author": "Nick Colley <nickcolley7@gmail.com> (https://twitter.com/nickcolley)",
+  "author": "Austin Moore <owstingreen@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nickcolley/scrambo/issues"
+    "url": "https://github.com/Owstin/scrambo/issues"
   },
   "bin": {
     "scrambo": "./lib/cli.js"
