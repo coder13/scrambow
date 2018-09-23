@@ -1,6 +1,6 @@
 {
   "name": "scrambow",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "Javascript Rubik's Cube Scramble Generator ",
   "main": "./lib/scrambow.js",
   "dependencies": {
@@ -17,7 +17,7 @@
     "test:watch": "mocha -R min -w",
     "cover": "istanbul cover _mocha",
     "build": "browserify lib/scrambow.js --standalone Scrambow | uglifyjs > scrambow.js",
-    "prepublish": "npm build"
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -36,6 +36,6 @@
     "url": "https://github.com/Owstin/scrambo/issues"
   },
   "bin": {
-    "scrambo": "./lib/cli.js"
+    "scrambow": "./lib/cli.js"
   }
 }
