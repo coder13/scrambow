@@ -2,7 +2,35 @@
   "name": "scrambow",
   "version": "0.3.0",
   "description": "Javascript Rubik's Cube Scramble Generator ",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Owstin/scrambo.git"
+  },
+  "keywords": [
+    "scramble",
+    "scrambow",
+    "cube",
+    "rubik",
+    "jsss"
+  ],
+  "author": "Austin Moore <owstingreen@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Owstin/scrambo/issues"
+  },
   "main": "./scrambow.js",
+  "bin": {
+    "scrambow": "./cli.js"
+  },
+  "scripts": {
+    "test": "mocha -s 10",
+    "test:watch": "mocha -R min -w",
+    "cover": "istanbul cover _mocha",
+    "prebuild": "rimraf ./dist/ && tsc && cpr ./lib/scramblers/ ./dist/scramblers/",
+    "build": "browserify ./dist/scrambow.js --standalone Scrambow | uglifyjs > scrambow.js",
+    "postbuild": "browserify ./dist/cli.js | uglifyjs > cli.js",
+    "prepublish": "npm run build & np run build:cli"
+  },
   "dependencies": {
     "commander": "^2.19.0"
   },
@@ -16,33 +44,5 @@
     "tslint": "^5.11.0",
     "typescript": "^3.1.3",
     "uglify-js": "^2.4.13"
-  },
-  "scripts": {
-    "test": "mocha -s 10",
-    "test:watch": "mocha -R min -w",
-    "cover": "istanbul cover _mocha",
-    "prebuild": "rimraf ./dist/ && tsc && cpr ./lib/scramblers/ ./dist/scramblers/",
-    "build": "browserify ./dist/scrambow.js --standalone Scrambow | uglifyjs > scrambow.js",
-    "postbuild": "browserify ./dist/cli.js | uglifyjs > cli.js",
-    "prepublish": "npm run build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/Owstin/scrambo.git"
-  },
-  "keywords": [
-    "scramble",
-    "scrambo",
-    "cube",
-    "rubik",
-    "jsss"
-  ],
-  "author": "Austin Moore <owstingreen@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Owstin/scrambo/issues"
-  },
-  "bin": {
-    "scrambow": "./cli.js"
   }
 }
