@@ -1,3 +1,6 @@
 node_modules/
 npm-debug.log
 coverage/
+dist/
+scrambow.js
+cli.js
