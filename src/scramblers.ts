@@ -3,10 +3,14 @@ export interface Scramble {
   scramble_string: string | '';
 }
 
+export interface Seed {
+  random: (seed: number) => number;
+}
+
 interface Scrambler {
   version?: string;
-  initialize: (randomSource: any) => Function | void;
-  setRandomSource: (randomSrc: any) => void;
+  initialize: (randomSource: Seed) => Function | void;
+  setRandomSource: (randomSource: Seed) => void;
   getRandomScramble: () => Scramble;
   setScrambleLength: (length: number) => void;
 }

@@ -1,16 +1,10 @@
 import { hashCode } from './util';
-import { scramblers, Scramble } from './scramblers';
-
-interface Seed {
-  random?: (seed: number) => number;
-}
+import { scramblers, Scramble, Seed } from './scramblers';
 
 export class Scrambow {
   type = '333';
   length = 20;
-  seed: Seed = {
-    random: () => Math.random()
-  };
+  seed: Seed = Math;
 
   constructor(type?: string, length?: number) {
     this.setLength(length || this.length);
@@ -19,7 +13,7 @@ export class Scrambow {
 
   init() {
     if (!scramblers.hasOwnProperty(this.type)) {
-      throw new Error(`Invalid scrambler, allowed: ${Object.keys(scramblers)}`)
+      throw new Error(`Invalid scrambler, allowed: ${Object.keys(scramblers).join(', ')}`)
     }
 
     scramblers[this.type].initialize(this.seed);
@@ -27,12 +21,14 @@ export class Scrambow {
 
   setType(type: string) {
     if (!arguments.length) {
-      return;
+      return this;
     }
 
     this.type = type;
 
     this.init();
+
+    return this;
   }
 
   get(num: number = 1) {
@@ -47,7 +43,7 @@ export class Scrambow {
 
   setSeed(seed: number) {
     if (!arguments.length) {
-      return;
+      return this;
     }
 
     const seedStr = seed.toString();
@@ -59,15 +55,19 @@ export class Scrambow {
     }
 
     this.init();
+
+    return this;
   }
 
   setLength(length: number) {
     if (!arguments.length) {
-      return;
+      return this;
     }
 
     this.length = length;
 
     scramblers[this.type].setScrambleLength(this.length);
+
+    return this;
   }
 }

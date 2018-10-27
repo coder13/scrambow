@@ -1,5 +1,5 @@
-import { Scrambow } from './scrambow';
 import cli from 'commander';
+import { Scrambow } from './scrambow';
 import { Scramble } from './scramblers';
 
 cli
