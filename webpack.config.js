@@ -25,6 +25,7 @@ module.exports = {
   output: {
     filename: '[name].js',
     library: 'scrambow',
-    libraryTarget: 'umd'
+    libraryTarget: 'umd',
+    globalObject: "typeof self !== \"undefined\" ? self : this"
   }
 };
