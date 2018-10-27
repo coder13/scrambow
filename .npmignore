@@ -1,0 +1,11 @@
+/node_modules
+/test
+/src
+/example
+/scripts
+webpack.config.js
+scrambo.svg
+yarn-error.log
+yarn.lock
+tsconfig.json
+*.tgz
