@@ -1,9 +1,10 @@
 import cli from 'commander';
 import { Scrambow } from './scrambow';
 import { Scramble } from './scramblers';
+const packageVersion = require('../package.json').version;
 
 cli
-  .version('0.3.0')
+  .version(packageVersion)
   .option('-n, --number [num]', 'set amount of scrambles to generate')
   .option('-t, --type [string]', 'set the scramble type', '333')
   .option('-s, --seed [num]', 'set seed')
