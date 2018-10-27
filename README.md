@@ -1,55 +1,53 @@
-[![Build Status](https://travis-ci.org/nickcolley/scrambo.svg?branch=master)](https://travis-ci.org/nickcolley/scrambo)
-# Scrambo - Puzzle Scramble Generator
+# Scrambow - Puzzle Scramble Generator
 ![scrambo](http://rawgithub.com/nickcolley/scrambo/master/scrambo.svg)
 
 ## Usage
 ```javascript
 // Generate a new 4x4 scramble with the seed of 1
-var seeded_scramble = new Scrambo().type('444').seed(1).get();
+var seeded_scramble = new Scrambow().setType('444').setSeed(1).get();
 console.log(seeded_scramble);
 
 // Generate 5 scrambles (defaults to 3x3)
-var multiple_scrambles = new Scrambo().get(5);
+var multiple_scrambles = new Scrambow().get(5);
 console.log(multiple_scrambles);
 ```
 
 ## Cli
 ```bash
-npm install -g scrambo
-scrambo
+npm install -g scrambow
+scrambow
+```
+### Command line options
+```
+-V, --version        output the version number
+-n, --number [num]   set amount of scrambles to generate
+-t, --type [string]  set the scramble type (default: "333")
+-s, --seed [num]     set seed
+-l, --length [num]   set scramble length
+-h, --help           output usage information
 ```
 
 ## Node.js
 ```bash
-npm install scrambo
+npm install scrambow
 ```
 ```javascript
-var Scrambo = require('scrambo');
+var Scrambow = require('scrambow').Scrambow;
 
-var threebythree = new Scrambo(); // Defaults to 3x3
+var threebythree = new Scrambow(); // Defaults to 3x3
 console.log(threebythree.get(5)); // Returns 5 scrambles
-```
-
-## Browser
-```html
-<script src="scrambo.js"></script>
-
-<script>
-  var threebythree = new Scrambo(); // Defaults to 3x3
-  console.log(threebythree.get(5)); // Returns 5 scrambles
-</script>
 ```
 
 ## API
 ```javascript
 .get(num); // Returns a number of scrambles, defaults to 1.
-.type(str); // Sets the scramble type, defaults to 333.
-.seed(num); // Repeatable scrambles.
-.length(num); // Set scramble length, currently only for NNN, minx scrambles.
+.setType(str); // Sets the scramble type, defaults to 333.
+.setSeed(num); // Repeatable scrambles.
+.setLength(num); // Set scramble length, currently only for NNN, minx scrambles.
 ```
 
 ## Current status
-Alpha, but works!
+Working! (I think)
 
 ## Credits
-This is a fork of [jsss](https://github.com/cubing/jsss)
+This is a fork of [scrambo](https://github.com/nickcolley/scrambo)
