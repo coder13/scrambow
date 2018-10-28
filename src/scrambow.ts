@@ -49,9 +49,11 @@ export class Scrambow {
     const seedStr = seed.toString();
     let hash = hashCode(seedStr);
 
-    this.seed.random = () => {
+    this.seed = {
+      random() {
       const x = Math.sin(hash++) * 10000;
       return x - Math.floor(x);
+    }
     }
 
     this.init();

@@ -4,7 +4,7 @@ export interface Scramble {
 }
 
 export interface Seed {
-  random: (seed: number) => number;
+  random: () => number;
 }
 
 interface Scrambler {
