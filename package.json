@@ -1,6 +1,6 @@
 {
   "name": "scrambow",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Javascript Rubik's Cube Scramble Generator ",
   "repository": {
     "type": "git",
@@ -23,10 +23,10 @@
     "scrambow": "./dist/cli.js"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha -r ts-node/register test/*.ts",
+    "test": "mocha -r ts-node/register test/*.ts",
     "build": "webpack",
     "postbuild": "node scripts/addSheBang.js dist/cli.js",
-    "cover": "istanbul cover _mocha",
+    "cover": "nyc mocha -r ts-node/register test/*.ts",
     "prepare": "npm run build"
   },
   "dependencies": {
@@ -39,6 +39,7 @@
     "chai": "^4.2.0",
     "istanbul": "^0.4.5",
     "mocha": "^5.2.0",
+    "nyc": "^13.1.0",
     "rimraf": "^2.6.2",
     "ts-loader": "^5.2.2",
     "ts-node": "^7.0.1",
@@ -48,5 +49,17 @@
     "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "^4.23.1",
     "webpack-cli": "^3.1.2"
+  },
+  "nyc": {
+    "extension": [
+      ".ts"
+    ],
+    "include": [
+      "src/**/*.ts"
+    ],
+    "reporter": [
+      "html"
+    ],
+    "all": true
   }
 }
