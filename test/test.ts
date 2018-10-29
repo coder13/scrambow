@@ -30,7 +30,7 @@ describe('Scrambow', () => {
     });
   });
 
-  describe.only('same scrambles', () => {
+  describe('same scrambles', () => {
     let expected: Scrambow;
 
     beforeEach(() => {
@@ -77,7 +77,7 @@ describe('Scrambow', () => {
       expect(generated).to.deep.eq(expectedScrambles);
     });
 
-    it.only('should match pyram', () => {
+    it('should match pyram', () => {
       const expectedScrambles = expected.setSeed(1).setType('pyram').get(1);
 
       const generated = test.setSeed(1).setType('pyram').get(1);
