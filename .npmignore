@@ -1,8 +1,10 @@
+/.nyc_output
+/coverage
 /node_modules
-/test
-/src
 /example
 /scripts
+/src
+/test
 webpack.config.js
 scrambo.svg
 yarn-error.log
