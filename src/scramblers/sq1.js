@@ -749,7 +749,7 @@ var scrambler = (function () {
     };
   }
 
-  var setScrambleLength = function() { return; };
+  var setScrambleLength = function () { return; };
 
   /*
    * Export public methods.
