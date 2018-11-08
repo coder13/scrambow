@@ -19,7 +19,7 @@ if (cli.seed) {
   out.setSeed(cli.seed);
 }
 if (cli.length) {
-  out.setLength(cli.lenth);
+  out.setLength(cli.length);
 }
 if (cli.number) {
   scrambles = out.get(cli.number);
