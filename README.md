@@ -15,6 +15,9 @@ console.log(multiple_scrambles);
 ## Cli
 ```bash
 npm install -g scrambow
+#or
+yarn global add scrambow
+
 scrambow
 ```
 ### Command line options
