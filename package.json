@@ -22,6 +22,9 @@
   "bin": {
     "scrambow": "./dist/cli.js"
   },
+  "files": [
+    "/dist"
+  ],
   "scripts": {
     "test": "mocha -r ts-node/register test/*.ts",
     "build": "webpack",
