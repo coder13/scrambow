@@ -14,13 +14,19 @@ cli
 const out = new Scrambow();
 let scrambles: Array<Scramble>;
 
-out.setType(cli.type);
-if (cli.seed) {
-  out.setSeed(cli.seed);
+try {
+  out.setType(cli.type.toLowerCase());
+  if (cli.seed) {
+    out.setSeed(cli.seed);
+  }
+  if (cli.length) {
+    out.setLength(cli.length);
+  }
+} catch (error) {
+  console.error(error.message);
+  process.exit(1);
 }
-if (cli.length) {
-  out.setLength(cli.length);
-}
+
 if (cli.number) {
   scrambles = out.get(cli.number);
 } else {
