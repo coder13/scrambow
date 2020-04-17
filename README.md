@@ -14,11 +14,13 @@ console.log(multiple_scrambles);
 
 ## Cli
 ```bash
+# install
 npm install -g scrambow
-#or
+# or
 yarn global add scrambow
 
-scrambow
+# example usage
+scrambow -t 333 -n 5
 ```
 ### Command line options
 ```
