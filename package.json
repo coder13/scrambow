@@ -26,6 +26,7 @@
     "/dist"
   ],
   "scripts": {
+    "dev:cli": "ts-node src/cli.ts",
     "test": "mocha -r ts-node/register test/*.ts",
     "build": "webpack",
     "postbuild": "node scripts/addSheBang.js dist/cli.js",
