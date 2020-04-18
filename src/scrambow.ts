@@ -30,8 +30,8 @@ export class Scrambow {
     return stack;
   }
 
-  setType(type: string) {
-    if (!arguments.length) {
+  setType(type?: string) {
+    if (!type) {
       return this;
     }
 
@@ -50,8 +50,8 @@ export class Scrambow {
     return lowerType;
   }
 
-  setSeed(seed: number) {
-    if (!arguments.length) {
+  setSeed(seed?: number) {
+    if (!seed) {
       return this;
     }
 
@@ -70,8 +70,8 @@ export class Scrambow {
     return this;
   }
 
-  setLength(length: number) {
-    if (!arguments.length) {
+  setLength(length?: number) {
+    if (!length) {
       return this;
     }
 
@@ -83,6 +83,10 @@ export class Scrambow {
   }
 
   setArgs(...args: string[]) {
+    if (!args.length) {
+      return this;
+    }
+
     this.args = args;
 
     return this;
