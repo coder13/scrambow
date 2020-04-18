@@ -23,7 +23,7 @@ export const scramblers: Scramblers = {};
 
 const register = (scramblers: Scramblers, scramblerAliases: ScramblerAliases) =>
   (name: string, scrambler: Scrambler, aliases: string[] = []) => {
-    aliases.forEach(a => { scramblerAliases[a] = name });
+    aliases.forEach(a => { scramblerAliases[a.toLowerCase()] = name });
     scramblers[name] = scrambler;
   };
 
