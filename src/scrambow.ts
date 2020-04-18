@@ -5,6 +5,7 @@ export class Scrambow {
   type = '333';
   length = 20;
   seed: Seed = Math;
+  args: string[] = [];
 
   constructor(type?: string, length?: number) {
     this.setLength(length || this.length);
@@ -23,7 +24,7 @@ export class Scrambow {
     const stack = Array<Scramble>(num);
 
     for(let i = 0; i < num; i++) {
-      stack[i] = scramblers[this.type].getRandomScramble();
+      stack[i] = scramblers[this.type].getRandomScramble(this.args);
     }
 
     return stack;
@@ -69,6 +70,12 @@ export class Scrambow {
     this.length = length;
 
     scramblers[this.type].setScrambleLength(this.length);
+
+    return this;
+  }
+
+  setArgs(args: string[]) {
+    this.args = args;
 
     return this;
   }

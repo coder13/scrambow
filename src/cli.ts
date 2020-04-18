@@ -12,10 +12,11 @@ cli
   .parse(process.argv);
 
 const out = new Scrambow();
-let scrambles: Array<Scramble>;
+let scrambles: Scramble[];
 
 try {
   out.setType(cli.type.toLowerCase());
+  out.setArgs(cli.args);
   if (cli.seed) {
     out.setSeed(cli.seed);
   }
