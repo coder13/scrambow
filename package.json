@@ -1,10 +1,10 @@
 {
   "name": "scrambow",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Javascript Rubik's Cube Scramble Generator ",
   "repository": {
     "type": "git",
-    "url": "git://github.com/Owstin/scrambo.git"
+    "url": "git://github.com/Owstin/scrambow.git"
   },
   "keywords": [
     "scramble",
@@ -16,7 +16,7 @@
   "author": "Austin Moore <owstingreen@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Owstin/scrambo/issues"
+    "url": "https://github.com/Owstin/scrambow/issues"
   },
   "main": "./dist/scrambow.js",
   "bin": {

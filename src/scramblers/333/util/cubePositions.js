@@ -50,6 +50,17 @@ const EO = {
   BR: 11
 };
 
+/*     0   1   2   3   4   5   6   7
+ * co: BLD FLD FRD BRU BLU FLU FRU BRD
+ * cp: BDR BLD FLD DFR BRU BLU FLU FRU
+ *
+ *     0  1  2  3  4  5  6  7  8  9  10 11
+ * ep: BR BL FL FR DB DL DF DR UB UL UF UR
+ * eo: UR UF UL UB DL DF DR DB FR FL BL BR
+ *
+ * cori:
+ * */
+
 module.exports = {
   CP,
   CO,
