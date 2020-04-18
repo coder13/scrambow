@@ -9,6 +9,7 @@ module.exports = function (register) {
   require('./lccp')(register);
   require('./ll')(register);
   require('./lsll')(register);
+  require('./moves')(register);
   require('./nls')(register);
   require('./pll')(register);
   require('./trizbll')(register);
