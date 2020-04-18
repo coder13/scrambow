@@ -10,19 +10,12 @@
  * rewritten for es6 and documented by Caleb Hoover;
  *
  */
+const { swap, createArray } = require('./util/helpers');
 
 var scrambler = (function () {
+  const nullMethod = () => { };
 
-  const nullMethod = () => {};
-
-  // creates 2 dimensional array where the base has length1 and each element array has length2
-  const createArray = function (length1, length2){
-    let result = Array(length1);
-    for (let i=0; i<length1; result[i++]=Array(length2));
-    return result;
-  }
-
-  function $clinit_CoordCube(){
+  function $clinit_CoordCube() {
     $clinit_CoordCube = nullMethod;
     UDSliceMove = createArray(495, 18);
     TwistMove = createArray(324, 18);
@@ -44,7 +37,7 @@ var scrambler = (function () {
 
   /* Init Stuff: */
 
-  function initCParity(){
+  function initCParity() {
     for (let i = 0; i < 346; ++i) {
       CParity[i] = 0;
     }
@@ -54,7 +47,7 @@ var scrambler = (function () {
     }
   }
 
-  function initCPermMove(){
+  function initCPermMove() {
     let c = new CubieCube_0;
     let d = new CubieCube_0;
     for (let i = 0; i < 2768; ++i) {
@@ -66,7 +59,7 @@ var scrambler = (function () {
     }
   }
 
-  function initEPermMove(){
+  function initEPermMove() {
     let c = new CubieCube_0;
     let d = new CubieCube_0;
     for (let i = 0; i < 2768; ++i) {
@@ -78,7 +71,7 @@ var scrambler = (function () {
     }
   }
 
-  function initFlipMove(){
+  function initFlipMove() {
     let c = new CubieCube_0;
     let d = new CubieCube_0;
     for (let i = 0; i < 336; ++i) {
@@ -90,7 +83,7 @@ var scrambler = (function () {
     }
   }
 
-  function initMCEPermPrun(callback){
+  function initMCEPermPrun(callback) {
     let check, corn, cornx, edge, edgex, idx, idxx, inv, m_0, mid, midx, select, sym, symx;
     let c = new CubieCube_0;
     let d = new CubieCube_0;
@@ -112,8 +105,8 @@ var scrambler = (function () {
     MEPermPrun[0] = 0;
     while (done < 66432) {
       inv = depth > 7;
-      select = inv?-1:depth;
-      check = inv?depth:-1;
+      select = inv ? -1 : depth;
+      check = inv ? depth : -1;
       ++depth;
       for (i = 0; i < 66432; ++i) {
         if (MEPermPrun[i] === select) {
@@ -131,7 +124,7 @@ var scrambler = (function () {
                 MEPermPrun[i] = depth;
                 break;
               }
-               else {
+              else {
                 MEPermPrun[idx] = depth;
                 sym = SymState[edgex];
                 if (sym != 0) {
@@ -151,7 +144,7 @@ var scrambler = (function () {
           }
         }
       }
-      callback("MEPermPrun: " + (Math.floor(done * 100 / 66432)) +"% (" + done + "/66432)");
+      callback("MEPermPrun: " + (Math.floor(done * 100 / 66432)) + "% (" + done + "/66432)");
     }
     for (i = 0; i < 66432; ++i) {
       MCPermPrun[i] = -1;
@@ -161,8 +154,8 @@ var scrambler = (function () {
     done = 1;
     while (done < 66432) {
       inv = depth > 7;
-      select = inv?-1:depth;
-      check = inv?depth:-1;
+      select = inv ? -1 : depth;
+      check = inv ? depth : -1;
       ++depth;
       for (i = 0; i < 66432; ++i) {
         if (MCPermPrun[i] === select) {
@@ -180,7 +173,7 @@ var scrambler = (function () {
                 MCPermPrun[i] = depth;
                 break;
               }
-               else {
+              else {
                 MCPermPrun[idx] = depth;
                 sym = SymState[cornx];
                 if (sym != 0) {
@@ -200,11 +193,11 @@ var scrambler = (function () {
           }
         }
       }
-      callback("MCPermPrun: " + (Math.floor(done * 100 / 66432)) +"% (" + done + "/66432)");
+      callback("MCPermPrun: " + (Math.floor(done * 100 / 66432)) + "% (" + done + "/66432)");
     }
   }
 
-  function initMPermConj(){
+  function initMPermConj() {
     let c = new CubieCube_0;
     let d = new CubieCube_0;
     for (let i = 0; i < 24; ++i) {
@@ -216,7 +209,7 @@ var scrambler = (function () {
     }
   }
 
-  function initMPermMove(){
+  function initMPermMove() {
     let c = new CubieCube_0;
     let d = new CubieCube_0;
     for (let i = 0; i < 24; ++i) {
@@ -228,7 +221,7 @@ var scrambler = (function () {
     }
   }
 
-  function initMid32MPerm(){
+  function initMid32MPerm() {
     var c, i;
     c = new CubieCube_0;
     for (i = 0; i < 24; ++i) {
@@ -237,7 +230,7 @@ var scrambler = (function () {
     }
   }
 
-  function initMid3Move(){
+  function initMid3Move() {
     let c = new CubieCube_0;
     let d = new CubieCube_0;
     for (let i = 0; i < 1320; ++i) {
@@ -251,7 +244,7 @@ var scrambler = (function () {
 
 
 
-  function initTwistFlipSlicePrun(callback){
+  function initTwistFlipSlicePrun(callback) {
     var SymState, SymStateF, c, check, d, depth, done, flip, flipx, fsym, fsymx, fsymxx, i, idx, idxx, inv, j, k, m_0, select, slice, slicex, sym, symF, symx, tsymx, twist, twistx;
     SymState = Array(324);
     c = new CubieCube_0;
@@ -285,8 +278,8 @@ var scrambler = (function () {
     done = 8;
     while (done < 870912) {
       inv = depth > 6;
-      select = inv?-1:depth;
-      check = inv?depth:-1;
+      select = inv ? -1 : depth;
+      check = inv ? depth : -1;
       ++depth;
       for (i = 0; i < 870912; ++i) {
         if (TwistFlipPrun[i] != select)
@@ -309,12 +302,12 @@ var scrambler = (function () {
               TwistFlipPrun[i] = depth;
               break;
             }
-             else {
+            else {
               TwistFlipPrun[idx] = depth;
               sym = SymState[twistx];
               symF = SymStateF[flipx];
               if (sym != 1 || symF != 1) {
-                for (j = 0; j < 8; ++j , symF = symF >> 1) {
+                for (j = 0; j < 8; ++j, symF = symF >> 1) {
                   if ((symF & 1) === 1) {
                     fsymxx = Sym8MultInv[fsymx][j];
                     for (k = 0; k < 8; ++k) {
@@ -333,7 +326,7 @@ var scrambler = (function () {
           }
         }
       }
-      callback("TwistFlipPrun: " + (Math.floor(done * 100 / 870912)) +"% (" + done + "/870912)");
+      callback("TwistFlipPrun: " + (Math.floor(done * 100 / 870912)) + "% (" + done + "/870912)");
     }
     for (i = 0; i < 160380; ++i) {
       UDSliceTwistPrun[i] = -1;
@@ -343,8 +336,8 @@ var scrambler = (function () {
     done = 1;
     while (done < 160380) {
       inv = depth > 6;
-      select = inv?-1:depth;
-      check = inv?depth:-1;
+      select = inv ? -1 : depth;
+      check = inv ? depth : -1;
       ++depth;
       for (i = 0; i < 160380; ++i) {
         if (UDSliceTwistPrun[i] === select) {
@@ -362,7 +355,7 @@ var scrambler = (function () {
                 UDSliceTwistPrun[i] = depth;
                 break;
               }
-               else {
+              else {
                 UDSliceTwistPrun[idx] = depth;
                 sym = SymState[twistx];
                 if (sym != 1) {
@@ -382,7 +375,7 @@ var scrambler = (function () {
           }
         }
       }
-      callback("UDSliceTwistPrun: " + (Math.floor(done * 100 / 160380)) +"% (" + done + "/160380)");
+      callback("UDSliceTwistPrun: " + (Math.floor(done * 100 / 160380)) + "% (" + done + "/160380)");
     }
     for (i = 0; i < 166320; ++i) {
       UDSliceFlipPrun[i] = -1;
@@ -392,8 +385,8 @@ var scrambler = (function () {
     done = 1;
     while (done < 166320) {
       inv = depth > 6;
-      select = inv?-1:depth;
-      check = inv?depth:-1;
+      select = inv ? -1 : depth;
+      check = inv ? depth : -1;
       ++depth;
       for (i = 0; i < 166320; ++i) {
         if (UDSliceFlipPrun[i] === select) {
@@ -411,7 +404,7 @@ var scrambler = (function () {
                 UDSliceFlipPrun[i] = depth;
                 break;
               }
-               else {
+              else {
                 UDSliceFlipPrun[idx] = depth;
                 sym = SymStateF[flipx];
                 if (sym != 1) {
@@ -431,11 +424,11 @@ var scrambler = (function () {
           }
         }
       }
-      callback("UDSliceFlipPrun: " + (Math.floor(done * 100 / 166320)) +"% (" + done + "/166320)");
+      callback("UDSliceFlipPrun: " + (Math.floor(done * 100 / 166320)) + "% (" + done + "/166320)");
     }
   }
 
-  function initTwistMove(){
+  function initTwistMove() {
     let c = new CubieCube_0;
     let d = new CubieCube_0;
     for (let i = 0; i < 324; ++i) {
@@ -447,7 +440,7 @@ var scrambler = (function () {
     }
   }
 
-  function initUDSliceConj(){
+  function initUDSliceConj() {
     let c = new CubieCube_0;
     let d = new CubieCube_0;
     for (let i = 0; i < 495; ++i) {
@@ -459,7 +452,7 @@ var scrambler = (function () {
     }
   }
 
-  function initUDSliceMove(){
+  function initUDSliceMove() {
     let c = new CubieCube_0;
     let d = new CubieCube_0;
     for (let i = 0; i < 495; ++i) {
@@ -472,7 +465,7 @@ var scrambler = (function () {
   }
 
   var CParity, CPermMove, EPermMove, FlipMove, MCPermPrun, MEPermPrun, MPermConj, MPermMove, Mid32MPerm, Mid3Move, TwistFlipPrun, TwistMove, UDSliceConj, UDSliceFlipPrun, UDSliceMove, UDSliceTwistPrun;
-  function $clinit_CubieCube(){
+  function $clinit_CubieCube() {
     $clinit_CubieCube = nullMethod;
     temp_0 = new CubieCube_0;
     CubeSym = Array(16);
@@ -504,21 +497,21 @@ var scrambler = (function () {
     initSym();
   }
 
-  function $$init(cube){
+  function $$init(cube) {
     cube.cp = [0, 1, 2, 3, 4, 5, 6, 7];
     cube.co = [0, 0, 0, 0, 0, 0, 0, 0];
     cube.ep = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
     cube.eo = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   }
 
-  function $copy(cube, c){
+  function $copy(cube, c) {
     cube.cp = cp = c.cp.map(v => v);
     cube.co = co = c.co.map(v => v);
     cube.ep = ep = c.ep.map(v => v);
     cube.eo = eo = c.eo.map(v => v);
   }
 
-  function $getCPermSym(cube){
+  function $getCPermSym(cube) {
     var idx, k;
     if (EPermR2S != null) {
       idx = EPermR2S[get8Perm(cube.cp)];
@@ -535,7 +528,7 @@ var scrambler = (function () {
     return 0;
   }
 
-  function $getDRtoDL(cube){
+  function $getDRtoDL(cube) {
     var i, idxA, idxB, mask, r, t;
     idxA = 0;
     idxB = 0;
@@ -552,7 +545,7 @@ var scrambler = (function () {
     return idxA * 6 + idxB;
   }
 
-  function $getEPermSym(cube){
+  function $getEPermSym(cube) {
     var idx, k;
     if (EPermR2S != null) {
       return EPermR2S[get8Perm(cube.ep)];
@@ -567,7 +560,7 @@ var scrambler = (function () {
     return 0;
   }
 
-  function $getEdgePerm(cube){
+  function $getEdgePerm(cube) {
     var i, idx, m_0, t;
     m_0 = 1 << cube.ep[11];
     idx = 0;
@@ -579,7 +572,7 @@ var scrambler = (function () {
     return idx;
   }
 
-  function $getFlip(cube){
+  function $getFlip(cube) {
     var i, idx;
     idx = 0;
     for (i = 0; i < 11; ++i) {
@@ -588,7 +581,7 @@ var scrambler = (function () {
     return idx;
   }
 
-  function $getFlipSym(cube){
+  function $getFlipSym(cube) {
     var idx, k;
     if (FlipR2S != null) {
       return FlipR2S[$getFlip(cube)];
@@ -603,7 +596,7 @@ var scrambler = (function () {
     return 0;
   }
 
-  function $getMPerm(cube){
+  function $getMPerm(cube) {
     var i, idx, m_0, t;
     m_0 = 1 << cube.ep[11];
     idx = 0;
@@ -615,7 +608,7 @@ var scrambler = (function () {
     return idx;
   }
 
-  function $getMid3(cube){
+  function $getMid3(cube) {
     var i, idxA, idxB, mask, r, t;
     idxA = 0;
     idxB = 0;
@@ -632,7 +625,7 @@ var scrambler = (function () {
     return idxA * 6 + idxB;
   }
 
-  function $getTwist(cube){
+  function $getTwist(cube) {
     var i, idx;
     idx = 0;
     for (i = 0; i < 7; ++i) {
@@ -642,7 +635,7 @@ var scrambler = (function () {
     return idx;
   }
 
-  function $getTwistSym(cube){
+  function $getTwistSym(cube) {
     var idx, k;
     if (TwistR2S != null) {
       return TwistR2S[$getTwist(cube)];
@@ -658,7 +651,7 @@ var scrambler = (function () {
     return 0;
   }
 
-  function $getUDSlice(cube){
+  function $getUDSlice(cube) {
     var i, idx, r;
     idx = 0;
     r = 4;
@@ -668,7 +661,7 @@ var scrambler = (function () {
     return idx;
   }
 
-  function $getURtoUL(cube){
+  function $getURtoUL(cube) {
     var i, idxA, idxB, mask, r, t;
     idxA = 0;
     idxB = 0;
@@ -685,7 +678,7 @@ var scrambler = (function () {
     return idxA * 6 + idxB;
   }
 
-  function $invCubieCube(cube){
+  function $invCubieCube(cube) {
     var corn, edge, ori;
     for (edge = 0; edge < 12; ++edge)
       cube.temps.ep[cube.ep[edge]] = edge;
@@ -701,7 +694,7 @@ var scrambler = (function () {
     $copy(cube, cube.temps);
   }
 
-  function $setEdgePerm(cube, idx){
+  function $setEdgePerm(cube, idx) {
     cube.ep[11] = 0;
     for (let i = 10; i >= 0; --i) {
       cube.ep[i] = idx % (12 - i);
@@ -712,7 +705,7 @@ var scrambler = (function () {
     }
   }
 
-  function $setFlip(cube, idx){
+  function $setFlip(cube, idx) {
     cube.eo[11] = bitOdd(idx);
     for (let i = 0; i < 11; ++i) {
       cube.eo[i] = (idx & 1);
@@ -720,7 +713,7 @@ var scrambler = (function () {
     }
   }
 
-  function $setMPerm(cube, idx){
+  function $setMPerm(cube, idx) {
     cube.ep[11] = 8;
     for (let i = 10; i >= 8; --i) {
       cube.ep[i] = idx % (12 - i) + 8;
@@ -731,7 +724,7 @@ var scrambler = (function () {
     }
   }
 
-  function $setMid3(cube, idxA){
+  function $setMid3(cube, idxA) {
     let edge = (perm3)[idxA % 6];
     idxA = ~~(idxA / 6);
     let r = 3;
@@ -740,13 +733,13 @@ var scrambler = (function () {
         idxA = idxA - Cnk[i][r--];
         cube.ep[i] = edge[2 - r];
       }
-       else {
+      else {
         cube.ep[i] = 8 - i + r;
       }
     }
   }
 
-  function $setTwist(cube, idx){
+  function $setTwist(cube, idx) {
     let twst = 0;
     for (let i = 6; i >= 0; --i) {
       twst = twst + (cube.co[i] = idx % 3);
@@ -755,20 +748,20 @@ var scrambler = (function () {
     cube.co[7] = (15 - twst) % 3;
   }
 
-  function $setUDSlice(cube, idx){
+  function $setUDSlice(cube, idx) {
     let r = 4;
     for (let i = 0; i < 12; ++i) {
       if (idx >= (Cnk)[11 - i][r]) {
         idx = idx - Cnk[11 - i][r--];
         cube.ep[i] = 11 - r;
       }
-       else {
+      else {
         cube.ep[i] = i + r - 4;
       }
     }
   }
 
-  function $verify(cube){
+  function $verify(cube) {
     let sum = 0;
     let edgeMask = 0;
     for (let e = 0; e < 12; ++e)
@@ -795,37 +788,37 @@ var scrambler = (function () {
     return 0;
   }
 
-  function CornConjugate(a, idx, b){
+  function CornConjugate(a, idx, b) {
     CornMultSym(CubeSym[SymInv[idx]], a, temp_0);
     CornMultSym(temp_0, CubeSym[idx], b);
   }
 
-  function CornMult(a, b, prod){
+  function CornMult(a, b, prod) {
     for (let corn = 0; corn < 8; ++corn) {
       prod.cp[corn] = a.cp[b.cp[corn]];
       prod.co[corn] = (a.co[b.cp[corn]] + b.co[corn]) % 3;
     }
   }
 
-  function CornMultSym(a, b, prod){
+  function CornMultSym(a, b, prod) {
     let ori, oriA, oriB;
     for (let corn = 0; corn < 8; ++corn) {
       prod.cp[corn] = a.cp[b.cp[corn]];
       oriA = a.co[b.cp[corn]];
       oriB = b.co[corn];
       ori = oriA;
-      ori = ori + (oriA < 3?oriB:3 - oriB);
+      ori = ori + (oriA < 3 ? oriB : 3 - oriB);
       ori = ori % 3;
       oriA < 3 ^ oriB < 3 && (ori = ori + 3);
       prod.co[corn] = ori;
     }
   }
 
-  function CubieCube_0(){
+  function CubieCube_0() {
     $$init(this);
   }
 
-  function CubieCube_1(cp, co, ep, eo){
+  function CubieCube_1(cp, co, ep, eo) {
     $$init(this);
     for (let i = 0; i < 8; ++i) {
       this.cp[i] = cp[i];
@@ -837,7 +830,7 @@ var scrambler = (function () {
     }
   }
 
-  function CubieCube_2(cperm, twist, eperm, flip){
+  function CubieCube_2(cperm, twist, eperm, flip) {
     $$init(this);
     set8Perm(this.cp, cperm);
     $setTwist(this, twist);
@@ -845,16 +838,16 @@ var scrambler = (function () {
     $setFlip(this, flip);
   }
 
-  function CubieCube_3(c){
+  function CubieCube_3(c) {
     CubieCube_1.call(this, c.cp, c.co, c.ep, c.eo);
   }
 
-  function EdgeConjugate(a, idx, b){
+  function EdgeConjugate(a, idx, b) {
     EdgeMult(CubeSym[SymInv[idx]], a, temp_0);
     EdgeMult(temp_0, CubeSym[idx], b);
   }
 
-  function EdgeMult(a, b, prod){
+  function EdgeMult(a, b, prod) {
     var ed;
     for (ed = 0; ed < 12; ++ed) {
       prod.ep[ed] = a.ep[b.ep[ed]];
@@ -862,7 +855,7 @@ var scrambler = (function () {
     }
   }
 
-  function get8Perm(arr){
+  function get8Perm(arr) {
     var i, idx, v, val;
     idx = 0;
     val = 1985229328;
@@ -874,7 +867,7 @@ var scrambler = (function () {
     return idx;
   }
 
-  function initMove(){
+  function initMove() {
     var m_0, mc, p;
     mc = Array(18);
     moveCube = [new CubieCube_2(15120, 0, 119750400, 0), new CubieCube_2(21021, 1494, 323403417, 0), new CubieCube_2(8064, 1236, 29441808, 802), new CubieCube_2(9, 0, 5880, 0), new CubieCube_2(1230, 412, 2949660, 0), new CubieCube_2(224, 137, 328552, 1160)];
@@ -889,7 +882,7 @@ var scrambler = (function () {
     moveCube = mc;
   }
 
-  function initSym(){
+  function initSym() {
     var c, d, f2, i, j, k, lr2, m_0, s, temp, u4;
     c = new CubieCube_0;
     d = new CubieCube_0;
@@ -974,14 +967,14 @@ var scrambler = (function () {
     }
   }
 
-  function initSym2Raw(){
+  function initSym2Raw() {
     var a, b, c, count, d, i, idx, j, m_0, mask, occ, s;
     c = new CubieCube_0;
     d = new CubieCube_0;
     occ = Array(1260);
     count = 0;
     for (i = 0; i < 64; occ[i++] = 0)
-    ;
+      ;
     for (i = 0; i < 2048; ++i) {
       if ((occ[i >>> 5] & 1 << (i & 31)) === 0) {
         $setFlip(c, i);
@@ -997,7 +990,7 @@ var scrambler = (function () {
     }
     count = 0;
     for (i = 0; i < 69; occ[i++] = 0)
-    ;
+      ;
     for (i = 0; i < 2187; ++i) {
       if ((occ[i >>> 5] & 1 << (i & 31)) === 0) {
         $setTwist(c, i);
@@ -1015,24 +1008,24 @@ var scrambler = (function () {
     mask = Array(2);
     mask[0] = Array(56);
     mask[1] = Array(56);
-    for (i=0; i<56; ++i) {
+    for (i = 0; i < 56; ++i) {
       mask[0][i] = mask[1][i] = 0;
     }
     for (i = 0; i < 40320; ++i) {
       set8Perm(c.ep, i);
       a = ~~($getURtoUL(c) / 6);
       b = ~~($getDRtoDL(c) / 6);
-      mask[b>>5][a] |= 1 << (b & 0x1f);
+      mask[b >> 5][a] |= 1 << (b & 0x1f);
     }
     for (i = 0; i < 56; ++i) {
       count = 0;
       for (j = 0; j < 56; ++j) {
-        ((mask[j>>5][i] & (1 << (j & 0x1f))) != 0) && (merge[i][j] = count++);
+        ((mask[j >> 5][i] & (1 << (j & 0x1f))) != 0) && (merge[i][j] = count++);
       }
     }
     count = 0;
     for (i = 0; i < 1260; occ[i++] = 0)
-    ;
+      ;
     for (i = 0; i < 40320; ++i) {
       if ((occ[i >>> 5] & 1 << (i & 31)) === 0) {
         set8Perm(c.ep, i);
@@ -1052,7 +1045,7 @@ var scrambler = (function () {
     }
   }
 
-  function set8Perm(arr, idx){
+  function set8Perm(arr, idx) {
     var i, m_0, p, v, val;
     val = 1985229328;
     for (i = 0; i < 7; ++i) {
@@ -1067,14 +1060,14 @@ var scrambler = (function () {
     arr[7] = val;
   }
 
-  function CubieCube () {}
+  function CubieCube() { }
 
   _ = CubieCube_3.prototype = CubieCube_2.prototype = CubieCube_0.prototype = CubieCube.prototype;
   _.temps = null;
   var CPermS2R, CubeSym, EPermR2S = null, EPermS2R, FlipR2S = null, FlipS2R, MtoEPerm, Sym8Move, Sym8Mult, Sym8MultInv, SymInv, SymMove, SymMoveUD, SymMult, TwistR2S = null, TwistS2R, e2c, merge, moveCube = null, temp_0, urf1, urf2, urfMove;
 
 
-  function $Solve(cube, c){
+  function $Solve(cube, c) {
     var i;
     c.temps = new CubieCube_0;
     for (i = 0; i < 6; ++i) {
@@ -1108,14 +1101,14 @@ var scrambler = (function () {
         cube.e1[0] = cube.e10[cube.urfidx];
         cube.e2[0] = cube.e20[cube.urfidx];
         if (cube.prun[cube.urfidx] <= cube.length1 && $phase1(cube, cube.twist[cube.urfidx], cube.tsym[cube.urfidx], cube.flip[cube.urfidx], cube.fsym[cube.urfidx], cube.slice_0[cube.urfidx], cube.length1, 18)) {
-          return cube.solution === null?'Error 8':cube.solution;
+          return cube.solution === null ? 'Error 8' : cube.solution;
         }
       }
     }
     return 'Error 7';
   }
 
-  function $init2(cube){
+  function $init2(cube) {
     var cornx, edge, esym, ex, i, lm, m_0, mid, prun, s, sb, urf;
     cube.valid2 = Math.min(cube.valid2, cube.valid1);
     for (i = cube.valid1; i < cube.length1; ++i) {
@@ -1145,7 +1138,7 @@ var scrambler = (function () {
     if (prun >= cube.maxlength2) {
       return false;
     }
-    lm = cube.length1 === 0?10:std2ud[~~(cube.move[cube.length1 - 1] / 3) * 3 + 1];
+    lm = cube.length1 === 0 ? 10 : std2ud[~~(cube.move[cube.length1 - 1] / 3) * 3 + 1];
     for (i = prun; i < cube.maxlength2; ++i) {
       if ($phase2(cube, edge, esym, cube.corn[cube.length1], cube.csym[cube.length1], mid, i, cube.length1, lm)) {
         cube.sol = cube.length1 + i;
@@ -1157,18 +1150,18 @@ var scrambler = (function () {
             sb += move2str[urfMove[urf][cube.move[s]]];
             sb += ' ';
           }
-          cube.useSeparator && (sb.impl.string += '.' , sb);
+          cube.useSeparator && (sb.impl.string += '.', sb);
           for (s = cube.length1; s < cube.sol; ++s) {
             sb += move2str[urfMove[urf][cube.move[s]]];
             sb += ' ';
           }
         }
-         else {
+        else {
           for (s = cube.sol - 1; s >= cube.length1; --s) {
             sb += move2str[urfMove[urf][cube.move[s]]];
             sb += ' ';
           }
-          cube.useSeparator && (sb += '.' , sb);
+          cube.useSeparator && (sb += '.', sb);
           for (s = cube.length1 - 1; s >= 0; --s) {
             sb += move2str[urfMove[urf][cube.move[s]]];
             sb += ' ';
@@ -1181,7 +1174,7 @@ var scrambler = (function () {
     return false;
   }
 
-  function $phase1(cube, twist, tsym, flip, fsym, slice, maxl, lm){
+  function $phase1(cube, twist, tsym, flip, fsym, slice, maxl, lm) {
     var flipx, fsymx, m_0, slicex, tsymx, twistx;
     if (twist === 0 && flip === 0 && slice === 0 && maxl < 5) {
       return maxl === 0 && $init2(cube);
@@ -1213,7 +1206,7 @@ var scrambler = (function () {
     return false;
   }
 
-  function $phase2(cube, edge, esym, corn, csym, mid, maxl, depth, lm){
+  function $phase2(cube, edge, esym, corn, csym, mid, maxl, depth, lm) {
     var cornx, csymx, edgex, esymx, m_0, midx;
     if (edge === 0 && corn === 0 && mid === 0) {
       return true;
@@ -1243,7 +1236,7 @@ var scrambler = (function () {
     return false;
   }
 
-  function $solution(cube, facelets){
+  function $solution(cube, facelets) {
     var $e0, cc, i, s;
     init_0();
     for (i = 0; i < 54; ++i) {
@@ -1266,7 +1259,7 @@ var scrambler = (function () {
         case 66:
           cube.f[i] = 5;
           break;
-        default:return 'Error 1';
+        default: return 'Error 1';
       }
     }
     cc = toCubieCube(cube.f);
@@ -1307,7 +1300,7 @@ var scrambler = (function () {
   _.valid1 = 0;
   _.valid2 = 0;
 
-  function init_0(safeStatusCallback){
+  function init_0(safeStatusCallback) {
     if (inited) {
       return;
     }
@@ -1348,7 +1341,7 @@ var scrambler = (function () {
   }
 
   var inited = false;
-  function $clinit_Util(){
+  function $clinit_Util() {
     $clinit_Util = nullMethod;
     cornerFacelet = [[8, 9, 20], [6, 18, 38], [0, 36, 47], [2, 45, 11], [29, 26, 15], [27, 44, 24], [33, 53, 42], [35, 17, 51]];
     edgeFacelet = [[5, 10], [7, 19], [3, 37], [1, 46], [32, 16], [28, 25], [30, 43], [34, 52], [23, 12], [21, 41], [50, 39], [48, 14]];
@@ -1378,8 +1371,8 @@ var scrambler = (function () {
       }
       ckmv2[10][i] = false;
     }
-    for (let i = 0; i<12; ++i)
-      for (let j = 0; j<12; ++j)
+    for (let i = 0; i < 12; ++i)
+      for (let j = 0; j < 12; ++j)
         Cnk[i][j] = 0;
     for (let i = 0; i < 12; ++i) {
       Cnk[i][0] = 1;
@@ -1393,7 +1386,7 @@ var scrambler = (function () {
     }
   }
 
-  function binarySearch(arr, key){
+  function binarySearch(arr, key) {
     let length_0 = arr.length;
     if (key <= arr[length_0 - 1]) {
       let l_0 = 0;
@@ -1404,10 +1397,10 @@ var scrambler = (function () {
         if (key > val) {
           l_0 = mid + 1;
         }
-         else if (key < val) {
+        else if (key < val) {
           r = mid - 1;
         }
-         else {
+        else {
           return mid;
         }
       }
@@ -1415,21 +1408,21 @@ var scrambler = (function () {
     return 65535;
   }
 
-  function bitCount(i){
+  function bitCount(i) {
     i = i - (i >>> 1 & 1431655765);
     i = (i & 858993459) + (i >>> 2 & 858993459);
     return i + (i >>> 8) + (i >>> 4) & 15;
   }
 
-  function bitOdd(i){
+  function bitOdd(i) {
     i = (i ^ i >>> 1);
     i = (i ^ i >>> 2);
     i = (i ^ i >>> 4);
     i = (i ^ i >>> 8);
     return (i & 1);
-  }`
+  } `
   `
-  function get12Parity(idx){
+  function get12Parity(idx) {
     let p = 0;
     for (let i = 10; i >= 0; --i) {
       p = p + idx % (12 - i);
@@ -1439,7 +1432,7 @@ var scrambler = (function () {
     return p;
   }
 
-  function get4Parity(idx){
+  function get4Parity(idx) {
     let p = 0;
     for (let i = 2; i >= 0; --i) {
       p = p + idx % (4 - i);
@@ -1449,7 +1442,7 @@ var scrambler = (function () {
     return p;
   }
 
-  function get8Parity(idx){
+  function get8Parity(idx) {
     let p = 0;
     for (let i = 6; i >= 0; --i) {
       p = p + idx % (8 - i);
@@ -1459,7 +1452,7 @@ var scrambler = (function () {
     return p;
   }
 
-  function toCubieCube(f){
+  function toCubieCube(f) {
     var ccRet, col1, col2, i, j, ori;
     ccRet = new CubieCube_0;
     for (i = 0; i < 8; ++i)
@@ -1497,7 +1490,7 @@ var scrambler = (function () {
     return ccRet;
   }
 
-  function toFaceCube(cc){
+  function toFaceCube(cc) {
     var c, e, f, i, j, n, ori, ts;
     f = Array(54);
     ts = [85, 82, 70, 68, 76, 66];
@@ -1526,15 +1519,15 @@ var scrambler = (function () {
   var randomSrc = Math;
 
   // If we have a better (P)RNG:
-  var setRandomSrc = function(func) {
+  var setRandomSrc = function (func) {
     randomSrc = func;
   }
 
   var initialized = false;
 
-  const ini = function(callback, iniRandomFunc, statusCallback) {
+  const ini = function (callback, iniRandomFunc, statusCallback) {
     if (typeof statusCallback !== "function") {
-      statusCallback = function() {};
+      statusCallback = function () { };
     }
 
     if (!initialized) {
@@ -1543,37 +1536,31 @@ var scrambler = (function () {
       iniRandomFunc && setRandomSrc(iniRandomFunc);
       initialized = true;
     }
-    if(callback) setTimeout(callback, 0);
+    if (callback) setTimeout(callback, 0);
   };
 
 
   // SCRAMBLERS
   var rn = (n) => Math.floor(randomSrc.random() * n);
 
-  const permConvert = function(arr) {
+  const permConvert = function (arr) {
     // arr contains array e.g. [0,1,2,4,3]
     let deltaArr = [];
-    for (let i=1; i<arr.length; i++) {
+    for (let i = 1; i < arr.length; i++) {
       let offset = 0;
-      for (let j=0; j<i; j++) {
+      for (let j = 0; j < i; j++) {
         if (arr[j] > arr[i]) offset++;
       }
       deltaArr.push(offset);
     }
     let result = 0;
-    for (let i=arr.length-1; i>0; i--) {
-      result = i * (deltaArr[i-1] + result);
+    for (let i = arr.length - 1; i > 0; i--) {
+      result = i * (deltaArr[i - 1] + result);
     }
     return result;
   }
 
-  let swap = (a,i,j) => {
-    let tmp = a[i];
-    a[i] = a[j];
-    a[j] = tmp;
-  }
-
-  const randomizeArr = function(arr, pos) {
+  const randomizeArr = function (arr, pos) {
     // randomize elements of arr at positions pos
     let newarr = [];
     for (let i = 0; i < pos.length; i++) {
@@ -1593,35 +1580,35 @@ var scrambler = (function () {
     return arr;
   }
 
-  const customScramble = function(cp, ep, co, eo) {
+  const customScramble = function (cp, ep, co, eo) {
     var cperm, eperm, cori, csum, eori, esum;
     do {
-      eperm = permConvert(randomizeArr([0,1,2,3,4,5,6,7,8,9,10,11],ep));
-      cperm = permConvert(randomizeArr([0,1,2,3,4,5,6,7],cp));
+      eperm = permConvert(randomizeArr([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], ep));
+      cperm = permConvert(randomizeArr([0, 1, 2, 3, 4, 5, 6, 7], cp));
     } while ((get8Parity(cperm) ^ get12Parity(eperm)) != 0);
     do {
       csum = 0;
       cori = 0;
-      for (var i=0; i<co.length; i++) {
+      for (var i = 0; i < co.length; i++) {
         var j = rn(3);
         csum += j;
-        cori += j * Math.pow(3,co[i]);
+        cori += j * Math.pow(3, co[i]);
       }
-    } while (csum%3 != 0);
+    } while (csum % 3 != 0);
     do {
       esum = 0;
       eori = 0;
-      for (var i=0; i<eo.length; i++) {
+      for (var i = 0; i < eo.length; i++) {
         var j = rn(2);
         esum += j;
-        eori += j * Math.pow(2,eo[i]);
+        eori += j * Math.pow(2, eo[i]);
       }
-    } while (esum%2 != 0);
-    var posit = toFaceCube(new CubieCube_2(cperm, cori%2187, eperm, eori%2048));
+    } while (esum % 2 != 0);
+    var posit = toFaceCube(new CubieCube_2(cperm, cori % 2187, eperm, eori % 2048));
     return $solution(search, posit);
   }
 
-  const customScramble2 = function(cp, ep, co, eo, cpa, epa, cori, eori) {
+  const customScramble2 = function (cp, ep, co, eo, cpa, epa, cori, eori) {
     var cperm, eperm, cori, csum, eori, esum;
     do {
       if (epa.length <= 1) {
@@ -1658,11 +1645,11 @@ var scrambler = (function () {
         }
       } while (esum % 2 != 0);
     }
-    var posit = toFaceCube(new CubieCube_2(cperm, cori%2187, eperm, eori%2048));
+    var posit = toFaceCube(new CubieCube_2(cperm, cori % 2187, eperm, eori % 2048));
     return $solution(search, posit);
   }
 
-  const getCustomScramble = function(options) {
+  const getCustomScramble = function (options) {
     return customScramble2(
       options.cp || [],
       options.ep || [],

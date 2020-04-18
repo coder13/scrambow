@@ -8,8 +8,16 @@ const swap = (a, i, j) => {
 
 const sum = array => array.reduce((a, b) => a + b);
 
+// creates 2 dimensional array where the base has length1 and each element array has length2
+const createArray = (length1, length2) => {
+  let result = Array(length1);
+  for (let i = 0; i < length1; result[i++] = Array(length2));
+  return result;
+}
+
 module.exports = {
   shift,
   swap,
-  sum
+  sum,
+  createArray
 }
