@@ -236,6 +236,46 @@ describe('Scrambow', () => {
 
       expect(generated).to.deep.eq(expectedScrambles);
     });
+
+    it('should match lse', () => {
+      const expectedScrambles = expected.setSeed(1).setType('lse').get(10);
+
+      const generated = test.setSeed(1).setType('lse').get(10);
+
+      expect(generated).to.deep.eq(expectedScrambles);
+    });
+
+    it('should match ru', () => {
+      const expectedScrambles = expected.setSeed(1).setType('ru').get(10);
+
+      const generated = test.setSeed(1).setType('ru').get(10);
+
+      expect(generated).to.deep.eq(expectedScrambles);
+    });
+
+    it('should match lu', () => {
+      const expectedScrambles = expected.setSeed(1).setType('lu').get(10);
+
+      const generated = test.setSeed(1).setType('lu').get(10);
+
+      expect(generated).to.deep.eq(expectedScrambles);
+    });
+
+    it('should match rud', () => {
+      const expectedScrambles = expected.setSeed(1).setType('rud').get(10);
+
+      const generated = test.setSeed(1).setType('rud').get(10);
+
+      expect(generated).to.deep.eq(expectedScrambles);
+    });
+
+    it('should match rul', () => {
+      const expectedScrambles = expected.setSeed(1).setType('rul').get(10);
+
+      const generated = test.setSeed(1).setType('rul').get(10);
+
+      expect(generated).to.deep.eq(expectedScrambles);
+    });
   });
 
   describe('type', () => {
@@ -278,18 +318,18 @@ describe('Scrambow', () => {
 
   describe('seeded scrambles', () => {
     it('should return the same each time', () => {
-      const seeded_scramble = test.setSeed(1).get().map(t => t['scramble_string']);
+      const seeded_scramble = test.setSeed(1).get().map(t => t.scramble_string);
 
       for (let i = 1; i <= 100; i++) {
-        expect(seeded_scramble).to.deep.eq(test.setSeed(1).get().map(t => t['scramble_string']));
+        expect(seeded_scramble).to.deep.eq(test.setSeed(1).get().map(t => t.scramble_string));
       }
     });
 
     it('complex should return the same each time', () => {
-      const seeded_scramble = test.setSeed(50).setType('444').get().map(t => t['scramble_string']);
+      const seeded_scramble = test.setSeed(50).setType('444').get().map(t => t.scramble_string);
 
       for (let i = 1; i <= 100; i++) {
-        expect(seeded_scramble).to.deep.eq(test.setSeed(50).setType('444').get().map(t => t['scramble_string']));
+        expect(seeded_scramble).to.deep.eq(test.setSeed(50).setType('444').get().map(t => t.scramble_string));
       }
     });
   });
@@ -360,23 +400,30 @@ describe('Scrambow', () => {
 
   describe('555', () => {
     it('scramble should equal 60', () => {
-      const result = test.setType('555').get().map(t => t['scramble_string']);
+      const result = test.setType('555').get().map(t => t.scramble_string);
       expect(result.join().split(' ').length).to.eq(60);
     });
 
     it('scramble should equal 5', () => {
-      const result = test.setType('555').setLength(5).get().map(t => t['scramble_string']);
+      const result = test.setType('555').setLength(5).get().map(t => t.scramble_string);
       expect(result.join().split(' ').length).to.eq(5);
     });
 
     it('scramble should equal 1', () => {
-      const result = test.setType('555').setLength(1).get().map(t => t['scramble_string']);
+      const result = test.setType('555').setLength(1).get().map(t => t.scramble_string);
       expect(result.join().split(' ').length).to.eq(1);
     });
 
     it('scramble should equal 10', () => {
-      const result = test.setType('555').setLength(10).get().map(t => t['scramble_string']);
+      const result = test.setType('555').setLength(10).get().map(t => t.scramble_string);
       expect(result.join().split(' ').length).to.eq(10);
     });
+  });
+
+  describe('moves', () => {
+    it.only('scramble length should equal 60', () => {
+      const result = test.setType('rud').setLength(60).get().map(t => t.scramble_string);
+      expect(result.join().split(/\s+/).length).to.eq(60);
+    })
   });
 });
