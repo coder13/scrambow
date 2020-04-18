@@ -1,5 +1,5 @@
 import { hashCode } from './util';
-import { scramblers, Scramble, Seed } from './scramblers';
+import { scramblers, aliases, Scramble, Seed } from './scramblers';
 
 export class Scrambow {
   type = '333';
@@ -35,11 +35,19 @@ export class Scrambow {
       return this;
     }
 
-    this.type = type.toLowerCase();
+    this.type = this.getType(type);
 
     this.init();
 
     return this;
+  }
+
+  private getType(type: string) {
+    const lowerType = type.toLowerCase();
+    if (aliases.hasOwnProperty(lowerType)) {
+      return aliases[lowerType];
+    }
+    return lowerType;
   }
 
   setSeed(seed: number) {

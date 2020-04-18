@@ -457,7 +457,7 @@ const pyram = function (register) {
     };
   })();
 
-  register('pyram', scrambler);
+  register('pyram', scrambler, ['pyra', 'pyraminx']);
 }
 
 module.exports = pyram;

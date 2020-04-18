@@ -770,7 +770,7 @@ const sq1 = function (register) {
     };
   })();
 
-  register('sq1', scrambler);
+  register('sq1', scrambler, ['square1', 'square-1', 'squan']);
 }
 
 module.exports = sq1;
