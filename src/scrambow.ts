@@ -1,5 +1,5 @@
 import { hashCode } from './util';
-import { scramblers, Scramble, Seed } from './scramblers';
+import { scramblers, aliases, Scramble, Seed } from './scramblers';
 
 export class Scrambow {
   type = '333';
@@ -30,20 +30,28 @@ export class Scrambow {
     return stack;
   }
 
-  setType(type: string) {
-    if (!arguments.length) {
+  setType(type?: string) {
+    if (!type) {
       return this;
     }
 
-    this.type = type;
+    this.type = this.getType(type);
 
     this.init();
 
     return this;
   }
 
-  setSeed(seed: number) {
-    if (!arguments.length) {
+  private getType(type: string) {
+    const lowerType = type.toLowerCase();
+    if (aliases.hasOwnProperty(lowerType)) {
+      return aliases[lowerType];
+    }
+    return lowerType;
+  }
+
+  setSeed(seed?: number) {
+    if (!seed) {
       return this;
     }
 
@@ -62,8 +70,8 @@ export class Scrambow {
     return this;
   }
 
-  setLength(length: number) {
-    if (!arguments.length) {
+  setLength(length?: number) {
+    if (!length) {
       return this;
     }
 
@@ -75,6 +83,10 @@ export class Scrambow {
   }
 
   setArgs(...args: string[]) {
+    if (!args.length) {
+      return this;
+    }
+
     this.args = args;
 
     return this;

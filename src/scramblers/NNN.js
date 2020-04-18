@@ -359,10 +359,10 @@ const nnn = function (register) {
     };
   };
 
-  register('444', scrambler(4, 40, true));
-  register('555', scrambler(5, 60, true));
-  register('666', scrambler(6, 70, true));
-  register('777', scrambler(7, 100, true));
+  register('444', scrambler(4, 40, true), ['4', '4x4', '4x4x4']);
+  register('555', scrambler(5, 60, true), ['5', '5x5', '5x5x5']);
+  register('666', scrambler(6, 70, true), ['6', '6x6', '6x6x6']);
+  register('777', scrambler(7, 100, true), ['7', '7x7', '7x7x7']);
 }
 
 module.exports = nnn;

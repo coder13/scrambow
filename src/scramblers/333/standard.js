@@ -23,7 +23,7 @@ const standard = function (register) {
     }
   })(base);
 
-  register('333', scrambler);
+  register('333', scrambler, ['3', '3x3', '3x3x3']);
 }
 
 module.exports = standard;

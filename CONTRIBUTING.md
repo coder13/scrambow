@@ -1,5 +1,5 @@
 # Contribution Guide
 
 - Pull Requests welcome
-
-Todo: Write guide on how to add a scramble backend.
+- Please use yarn as your package manager
+- Don't break the unit tests 👻

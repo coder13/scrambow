@@ -386,7 +386,8 @@ const scrambler222 = function (register) {
       setScrambleLength: function () { return; }
     };
   })();
-  register('222', scrambler)
+
+  register('222', scrambler, ['2', '2x2', '2x2x2']);
 }
 
 module.exports = scrambler222;

@@ -105,7 +105,7 @@ const minx = function (register) {
     };
   }();
 
-  register('minx', scrambler);
+  register('minx', scrambler, ['mega', 'megaminx']);
 }
 
 module.exports = minx;

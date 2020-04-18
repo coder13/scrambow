@@ -15,7 +15,7 @@ const out = new Scrambow();
 let scrambles: Scramble[];
 
 try {
-  out.setType(cli.type.toLowerCase());
+  out.setType(cli.type);
   out.setArgs(...cli.args);
   if (cli.seed) {
     out.setSeed(cli.seed);
@@ -34,4 +34,4 @@ if (cli.number) {
   scrambles = out.get();
 }
 
-console.log(scrambles.map(s => s.scramble_string).join('\n'));
+console.log(scrambles.map(s => s.scramble_string).join('\n\n'));
