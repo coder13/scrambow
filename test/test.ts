@@ -188,6 +188,54 @@ describe('Scrambow', () => {
 
       expect(generated).to.deep.eq(expectedScrambles);
     });
+
+    it('should match 2gll', () => {
+      const expectedScrambles = expected.setSeed(1).setType('2gll').get(10);
+
+      const generated = test.setSeed(1).setType('2gll').get(10);
+
+      expect(generated).to.deep.eq(expectedScrambles);
+    });
+
+    it('should match cls', () => {
+      const expectedScrambles = expected.setSeed(1).setType('cls').get(10);
+
+      const generated = test.setSeed(1).setType('cls').get(10);
+
+      expect(generated).to.deep.eq(expectedScrambles);
+    });
+
+    it('should match trizbll', () => {
+      const expectedScrambles = expected.setSeed(1).setType('trizbll').get(10);
+
+      const generated = test.setSeed(1).setType('trizbll').get(10);
+
+      expect(generated).to.deep.eq(expectedScrambles);
+    });
+
+    it('should match tsle', () => {
+      const expectedScrambles = expected.setSeed(1).setType('tsle').get(10);
+
+      const generated = test.setSeed(1).setType('tsle').get(10);
+
+      expect(generated).to.deep.eq(expectedScrambles);
+    });
+
+    it('should match zbll', () => {
+      const expectedScrambles = expected.setSeed(1).setType('zbll').get(10);
+
+      const generated = test.setSeed(1).setType('zbll').get(10);
+
+      expect(generated).to.deep.eq(expectedScrambles);
+    });
+
+    it('should match zz', () => {
+      const expectedScrambles = expected.setSeed(1).setType('zz').get(10);
+
+      const generated = test.setSeed(1).setType('zz').get(10);
+
+      expect(generated).to.deep.eq(expectedScrambles);
+    });
   });
 
   describe('type', () => {
