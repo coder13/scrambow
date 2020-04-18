@@ -63,11 +63,11 @@ const moves = function (register) {
     }
   }
 
-  register('lse', scrambler([['U'], ['M']], 20))
-  register('ru', scrambler([['R'],['U']], 20))
-  register('lu', scrambler([['L'],['U']], 20))
-  register('rud', scrambler([['R'],['U', 'D']], 24))
-  register('rul', scrambler([['R', 'L'], ['U']], 24))
+  register('lse', scrambler([['U'], ['M']], 20), ['mu']);
+  register('ru', scrambler([['R'],['U']], 20));
+  register('lu', scrambler([['L'],['U']], 20));
+  register('rud', scrambler([['R'],['U', 'D']], 24));
+  register('rul', scrambler([['R', 'L'], ['U']], 24));
 }
 
 module.exports = moves;

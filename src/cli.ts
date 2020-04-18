@@ -34,4 +34,4 @@ if (cli.number) {
   scrambles = out.get();
 }
 
-console.log(scrambles.map(s => s.scramble_string).join('\n'));
+console.log(scrambles.map(s => s.scramble_string).join('\n\n'));
