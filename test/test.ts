@@ -421,7 +421,7 @@ describe('Scrambow', () => {
   });
 
   describe('moves', () => {
-    it.only('scramble length should equal 60', () => {
+    it('scramble length should equal 60', () => {
       const result = test.setType('rud').setLength(60).get().map(t => t.scramble_string);
       expect(result.join().split(/\s+/).length).to.eq(60);
     })
