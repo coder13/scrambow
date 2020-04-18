@@ -1,6 +1,8 @@
 module.exports = function (register) {
   require('./standard')(register);
+  require('./2gll')(register);
   require('./ble')(register);
+  require('./cls')(register);
   require('./cmll')(register);
   require('./cmllsune')(register);
   require('./edges')(register);
@@ -9,7 +11,11 @@ module.exports = function (register) {
   require('./lsll')(register);
   require('./nls')(register);
   require('./pll')(register);
+  require('./trizbll')(register);
+  require('./tsle')(register);
   require('./wv')(register);
+  require('./zbll')(register);
+  require('./zz')(register);
   require('./zzll')(register);
   require('./zzlsll')(register);
 }

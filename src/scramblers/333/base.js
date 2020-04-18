@@ -11,6 +11,7 @@
  *
  */
 const { swap, createArray } = require('./util/helpers');
+const { coSubsets } = require('./util/coSubsets');
 
 var scrambler = (function () {
   const nullMethod = () => { };
@@ -1541,7 +1542,25 @@ var scrambler = (function () {
 
 
   // SCRAMBLERS
-  var rn = (n) => Math.floor(randomSrc.random() * n);
+  const rn = (n) => Math.floor(randomSrc.random() * n);
+
+  const shuffle = function (array) {
+    for (var i = array.length - 1; i > 0; i--) {
+      var j = Math.floor(randomSrc.random() * (i + 1));
+      swap(array, i, j)
+    }
+    return array;
+  }
+
+  const getRandomCO = function (args) {
+    if (!args.length) {
+      let subsets = Object.keys(coSubsets);
+      return coSubsets[subsets[rn(subsets.length)]];
+    } else {
+      let subsets = args.filter(a => !!coSubsets[a]);
+      return coSubsets[subsets[rn(args.length)]];
+    }
+  }
 
   const permConvert = function (arr) {
     // arr contains array e.g. [0,1,2,4,3]
@@ -1665,11 +1684,13 @@ var scrambler = (function () {
   return {
     initialize: function (randomSrc) { initialized = false; return ini(undefined, randomSrc); },
     setRandomSrc,
+    setScrambleLength: function () { return; },
     customScramble,
     customScramble2,
     getCustomScramble,
     rn,
-    setScrambleLength: function () { return; }
+    shuffle,
+    getRandomCO
   }
 })();
 
