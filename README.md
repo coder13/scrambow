@@ -49,6 +49,7 @@ console.log(threebythree.get(5)); // Returns 5 scrambles
 .setType(str); // Sets the scramble type, defaults to 333.
 .setSeed(num); // Repeatable scrambles.
 .setLength(num); // Set scramble length, currently only for NNN, minx scrambles.
+.setArgs(...args); // Set scramble args for 2gll, cls, trizbll, tsle, zbll and zz
 ```
 
 ## Current status

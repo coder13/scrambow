@@ -74,7 +74,7 @@ export class Scrambow {
     return this;
   }
 
-  setArgs(args: string[]) {
+  setArgs(...args: string[]) {
     this.args = args;
 
     return this;
