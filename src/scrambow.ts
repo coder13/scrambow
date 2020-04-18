@@ -35,7 +35,7 @@ export class Scrambow {
       return this;
     }
 
-    this.type = type;
+    this.type = type.toLowerCase();
 
     this.init();
 

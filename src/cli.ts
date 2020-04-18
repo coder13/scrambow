@@ -15,7 +15,7 @@ const out = new Scrambow();
 let scrambles: Scramble[];
 
 try {
-  out.setType(cli.type.toLowerCase());
+  out.setType(cli.type);
   out.setArgs(...cli.args);
   if (cli.seed) {
     out.setSeed(cli.seed);
