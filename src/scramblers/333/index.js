@@ -4,7 +4,6 @@ module.exports = function (register) {
   require('./ble')(register);
   require('./cls')(register);
   require('./cmll')(register);
-  require('./cmllsune')(register);
   require('./edges')(register);
   require('./lccp')(register);
   require('./ll')(register);

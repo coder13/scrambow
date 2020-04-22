@@ -1,29 +1,33 @@
 const base = require('./base');
+const { shift } = require('./util/helpers');
 
 const cmll = function (register) {
   const scrambler = (function (scrambler) {
-    const getCMLLScramble = function () {
-      return scrambler.customScramble(
-        [4, 5, 6, 7],
-        [4, 6, 8, 9, 10, 11],
-        [3, 4, 5, 6],
-        [0, 1, 2, 3, 5, 7]
-      );
+    const getCMLLScramble = function (args) {
+      const co = scrambler.getRandomCO(args);
+      const cori = [0, 0, 0, ...shift(co, scrambler.rn(4)), 0].reverse();
+
+      return scrambler.getCustomScramble({
+        cp: [4, 5, 6, 7],
+        ep: [4, 6, 8, 9, 10, 11],
+        cori: parseInt(cori.join(''), 3),
+        eo: [0, 1, 2, 3, 5, 7]
+      });
     }
 
     return {
       initialize: scrambler.initialize,
       setRandomSrc: scrambler.setRandomSrc,
-      getRandomScramble: function () {
+      getRandomScramble: function (args) {
         return {
-          scramble_string: getCMLLScramble()
+          scramble_string: getCMLLScramble(args)
         }
       },
       setScrambleLength: scrambler.setScrambleLength
     }
   })(base);
 
-  register('cmll', scrambler);
+  register('cmll', scrambler, ['l10p']);
 }
 
 module.exports = cmll;
