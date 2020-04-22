@@ -1,14 +1,16 @@
 import cli from 'commander';
 import { Scrambow } from './scrambow';
 import { Scramble } from './scramblers';
-const packageVersion = require('../package.json').version;
+const { version, name } = require('../package.json');
 
 cli
-  .version(packageVersion)
+  .name(name)
+  .version(`${name} ${version}`)
   .option('-n, --number [num]', 'set amount of scrambles to generate')
   .option('-t, --type [string]', 'set the scramble type', '333')
   .option('-s, --seed [num]', 'set seed')
   .option('-l, --length [num]', 'set scramble length')
+  .arguments('[arguments]')
   .parse(process.argv);
 
 const out = new Scrambow();
