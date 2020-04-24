@@ -5,9 +5,8 @@ const { EP, CP } = require('./util/cubePositions');
 const zbll = function (register) {
   const scrambler = (function (scrambler) {
     const getZBLLScramble = function (args) {
-      let co = scrambler.getRandomCO(args);
-
-      let cori = [0, 0, 0, ...shift(co, scrambler.rn(4)), 0].reverse();
+      const co = scrambler.getRandomCO(args);
+      const cori = [0, 0, 0, ...shift(co, scrambler.rn(4)), 0].reverse();
 
       return scrambler.getCustomScramble({
         ep: [EP.UF, EP.UL, EP.UB, EP.UR],
@@ -28,7 +27,7 @@ const zbll = function (register) {
     }
   })(base);
 
-  register('zbll', scrambler);
+  register('zbll', scrambler, ['coll']);
 }
 
 module.exports = zbll;
