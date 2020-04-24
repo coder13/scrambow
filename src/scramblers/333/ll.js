@@ -23,7 +23,7 @@ const ll = function (register) {
     }
   })(base);
 
-  register('ll', scrambler);
+  register('ll', scrambler, ['oll']);
 }
 
 module.exports = ll;
