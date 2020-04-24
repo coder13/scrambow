@@ -5,7 +5,7 @@ const ble = function (register) {
   const scrambler = (function (scrambler) {
     const getBLEScramble = function () {
       const ble = function () {
-        let a = [0, 0, 1, scrambler.rn(3), scrambler.rn(3), scrambler.rn(3), 0, 0];
+        const a = [0, 0, 1, scrambler.rn(3), scrambler.rn(3), scrambler.rn(3), 0, 0];
         a[6] = (3 - sum(a) % 3) % 3;
         return a;
       }

@@ -16,7 +16,7 @@ const cls = function (register) {
             num > 2 ? rn(2) + 1 : 0
           ];
         const co = shift(c, rn(3)); // BRU BLU FLU
-        let cori = [0, 0, 0, co[0], co[1], co[2], 2, 0];
+        const cori = [0, 0, 0, co[0], co[1], co[2], 2, 0];
         cori[2] = (3 - sum(cori) % 3) % 3;
         cori.reverse();
 
@@ -30,7 +30,7 @@ const cls = function (register) {
       '+': function () {
         const cpa = shuffle([4, 5, 6, 7]);
         const co = shift([rn(3), rn(3), rn(3)], rn(1)); // BRU BLU FLU
-        let cori = [0, 0, 0, co[0], co[1], co[2], 1, 0];
+        const cori = [0, 0, 0, co[0], co[1], co[2], 1, 0];
         cori[2] = (3 - sum(cori) % 3) % 3;
         cori.reverse();
 
@@ -44,7 +44,7 @@ const cls = function (register) {
       'O': function () {
         const cpa = shuffle([4, 5, 6, 7]);
         const co = shift([rn(3), rn(3), rn(3)], rn(1)); // BRU BLU FLU
-        let cori = [0, 0, 0, co[0], co[1], co[2], 0, 0];
+        const cori = [0, 0, 0, co[0], co[1], co[2], 0, 0];
         cori[2] = (3 - sum(cori) % 3) % 3;
         cori.reverse();
 
@@ -58,7 +58,7 @@ const cls = function (register) {
       'i': function () {
         const cpa = shuffle([4, 5, 6, 7]);
         const co = shift([rn(3), rn(3), rn(3)], rn(4)); // BRU BLU FLU
-        let cori = [0, 0, 1, co[0], co[1], co[2], 0, 0];
+        const cori = [0, 0, 1, co[0], co[1], co[2], 0, 0];
         cori[6] = (3 - sum(cori) % 3) % 3;
         cori.reverse();
 
@@ -72,7 +72,7 @@ const cls = function (register) {
       'im': function () {
         const cpa = shuffle([4, 5, 6, 7]);
         const co = shift([rn(3), rn(3), rn(3)], rn(4)); // BRU BLU FLU
-        let cori = [0, 0, 2, co[0], co[1], co[2], 0, 0];
+        const cori = [0, 0, 2, co[0], co[1], co[2], 0, 0];
         cori[6] = (3 - sum(cori) % 3) % 3;
         cori.reverse();
 
@@ -87,11 +87,11 @@ const cls = function (register) {
 
     const getCLSScramble = function (args) {
       if (!args.length) {
-        let subsets = Object.keys(clsSubsets);
-        let subset = clsSubsets[subsets[rn(subsets.length)]];
+        const subsets = Object.keys(clsSubsets);
+        const subset = clsSubsets[subsets[rn(subsets.length)]];
         return scrambler.getCustomScramble(subset());
       } else {
-        let subset = clsSubsets[args[rn(args.length)]];
+        const subset = clsSubsets[args[rn(args.length)]];
         return scrambler.getCustomScramble(subset(2));
       }
     }
