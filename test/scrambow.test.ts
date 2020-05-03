@@ -313,6 +313,14 @@ describe('Scrambow', () => {
         expect(generated).toEqual(expectedScrambes);
       });
 
+      it('should match fmc', () => {
+        const expectedScrambes = expected.setSeed(1).setType('fmc').get(10);
+
+        const generated = scrambler.setSeed(1).setType('fmc').get(10);
+
+        expect(generated).toEqual(expectedScrambes);
+      });
+
       it('should match lccp', () => {
         const expectedScrambes = expected.setSeed(1).setType('lccp').get(10);
 
