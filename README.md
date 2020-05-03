@@ -75,6 +75,7 @@ Current list of supported scramblers
 
       args: U, T, L, S, As, Pi, H
     - edges
+    - fmc
     - lccp
     - ll
     - lsll
