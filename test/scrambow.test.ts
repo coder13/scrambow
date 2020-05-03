@@ -57,7 +57,7 @@ describe('Scrambow', () => {
     })
   });
 
-  describe('deafults', () => {
+  describe('defaults', () => {
     it('should use Math for default seed', () => {
       expect(scrambler.seed).toEqual(Math);
     });
