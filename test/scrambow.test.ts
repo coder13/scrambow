@@ -57,7 +57,7 @@ describe('Scrambow', () => {
     })
   });
 
-  describe('deafults', () => {
+  describe('defaults', () => {
     it('should use Math for default seed', () => {
       expect(scrambler.seed).toEqual(Math);
     });
@@ -309,6 +309,14 @@ describe('Scrambow', () => {
         const expectedScrambes = expected.setSeed(1).setType('edges').get(10);
 
         const generated = scrambler.setSeed(1).setType('edges').get(10);
+
+        expect(generated).toEqual(expectedScrambes);
+      });
+
+      it('should match fmc', () => {
+        const expectedScrambes = expected.setSeed(1).setType('fmc').get(10);
+
+        const generated = scrambler.setSeed(1).setType('fmc').get(10);
 
         expect(generated).toEqual(expectedScrambes);
       });

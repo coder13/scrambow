@@ -19,8 +19,14 @@ npm install -g scrambow
 # or
 yarn global add scrambow
 
-# example usage
+# usage
 scrambow -t 333 -n 5
+
+# only generate 2gll scrambles with H, Pi or T corner orientations
+scrambow -t 2gll -n 100 H Pi T
+
+# only generate zz scrambles with 0, 6 or 12 flipped edges
+scrambow -t zz -n 12 0 6 12
 ```
 ### Command line options
 ```
@@ -52,8 +58,58 @@ console.log(threebythree.get(5)); // Returns 5 scrambles
 .setArgs(...args); // Set scramble args for 2gll, cls, trizbll, tsle, zbll and zz
 ```
 
-## Current status
-Working! (I think)
+## Scramblers
+Current list of supported scramblers
+- 2x2
+- 3x3
+
+  subsets
+    - 2gll
+
+      args: U, T, L, S, As, Pi, H
+    - ble
+    - cls
+
+      args: -, +, O, i, im
+    - cmll
+
+      args: U, T, L, S, As, Pi, H
+    - edges
+    - fmc
+    - lccp
+    - ll
+    - lsll
+    - lu
+    - nls
+    - pll
+    - random moves (non random state)
+      - lse
+      - lu
+      - ru
+      - rud
+      - rul
+    - trizbll
+
+      args: U, T, L, S, As, Pi, H
+    - tsle
+
+      args: twoGen
+    - wv
+    - zz
+
+      args: # of flipped edges
+    - zzll
+    - zzlsll
+- 4x4
+- 5x5
+- 6x6
+- 7x7
+- clock
+- megaminx
+- pyraminx
+- skewb
+- square 1
+
 
 ## Credits
 This is a fork of [scrambo](https://github.com/nickcolley/scrambo)

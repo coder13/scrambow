@@ -5,7 +5,7 @@ const scramble2gll = function (register) {
   const scrambler = (function (scrambler) {
     const get2GLLScramble = function (args) {
       const co = scrambler.getRandomCO(args);
-      let cori = [0, 0, 0, ...shift(co, scrambler.rn(4)), 0].reverse();
+      const cori = [0, 0, 0, ...shift(co, scrambler.rn(4)), 0].reverse();
 
       return scrambler.getCustomScramble({
         ep: [8, 9, 10, 11],
