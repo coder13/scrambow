@@ -297,6 +297,14 @@ describe('Scrambow', () => {
         expect(generated).toEqual(expectedScrambes);
       });
 
+      it('should match cmllsune', () => {
+        const expectedScrambes = expected.setSeed(1).setType('cmllsune').get(10);
+
+        const generated = scrambler.setSeed(1).setType('cmllsune').get(10);
+
+        expect(generated).toEqual(expectedScrambes);
+      });
+
       it('should match edges', () => {
         const expectedScrambes = expected.setSeed(1).setType('edges').get(10);
 
